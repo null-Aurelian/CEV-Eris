@@ -82,3 +82,21 @@
 	eyes_icon.Blend(right_eye)
 
 	return eyes_icon
+
+/obj/item/organ/internal/eyes/integratedhud
+	name = "Integrated HUD"
+	desc = "Robotic eyes with integrated HUD. Looks like this one wasn't set correctly during manufacture."
+	var/malfunctioning = FALSE
+
+
+	
+/*
+/obj/item/organ/internal/eyes/integratedhud/medical
+	name = "Integrated Medical HUD"
+	desc = "Robotic eyes with integrated Medical HUD."
+
+/obj/item/organ/internal/eyes/integratedhud/medical/process_hud(mob/M)
+	if(..())
+		return
+	process_med_hud(M,1)
+*/
