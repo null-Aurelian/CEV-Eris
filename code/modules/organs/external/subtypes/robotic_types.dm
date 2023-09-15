@@ -97,6 +97,15 @@
 /obj/item/organ/external/robotic/moebius/torso
 	default_description = /datum/organ_description/chest
 
+/obj/item/organ/external/robotic/moebius/torso/attack_self(var/mob/user) //Prototype function only
+	var/mob/living/carbon/human/H = new /mob/living/carbon/human(get_turf(user))
+	for(var/obj/item/organ/O in H.organs)
+		if(O != "the upper body")
+			H.organs.Remove(O)
+		to_chat(user, SPAN_NOTICE("[O]"))
+	//H.organs = list(/obj/item/organ/external/robotic/moebius/torso)
+	//H.rebuild_organs(FALSE)
+
 /obj/item/organ/external/robotic/moebius/head
 	default_description = /datum/organ_description/head
 
