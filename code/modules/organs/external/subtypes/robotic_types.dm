@@ -98,11 +98,16 @@
 	default_description = /datum/organ_description/chest
 
 /obj/item/organ/external/robotic/moebius/torso/attack_self(var/mob/user) //Prototype function only
-	var/mob/living/carbon/human/H = new /mob/living/carbon/human(get_turf(user))
-	for(var/obj/item/organ/O in H.organs)
-		if(O != "the upper body")
-			H.organs.Remove(O)
-		to_chat(user, SPAN_NOTICE("[O]"))
+	var/mob/living/carbon/human/H =new /mob/living/carbon/human(get_turf(user)) 
+	//H.organs.Add(new /obj/item/organ/external/robotic/moebius/torso) //adds the moebius chest but not recognized as upper torso
+	for(var/obj/item/organ/external/EO in H.organs)
+		if(EO.body_part != UPPER_TORSO)
+			EO.Destroy()
+		else
+			H.set_preference()
+		
+		//EO.Destroy()
+	
 	//H.organs = list(/obj/item/organ/external/robotic/moebius/torso)
 	//H.rebuild_organs(FALSE)
 
