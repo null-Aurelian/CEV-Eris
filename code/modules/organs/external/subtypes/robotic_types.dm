@@ -98,19 +98,13 @@
 	default_description = /datum/organ_description/chest
 
 /obj/item/organ/external/robotic/moebius/torso/attack_self(var/mob/user) //Prototype function only
-	var/mob/living/carbon/human/H =new /mob/living/carbon/human(get_turf(user)) 
-	//H.organs.Add(new /obj/item/organ/external/robotic/moebius/torso) //adds the moebius chest but not recognized as upper torso
+	var/mob/living/carbon/human/H =new /mob/living/carbon/human(get_turf(user)) //Is there a way to do this without creating a human first
 	for(var/obj/item/organ/external/EO in H.organs)
-		if(EO.body_part != UPPER_TORSO)
-			EO.Destroy()
-		else
-			H.set_preference()
-		
-		//EO.Destroy()
+		EO.Destroy()
+	H.organs.Add(new /obj/item/organ/external/robotic/moebius/torso(H))
+	user.drop_from_inventory(src)
+		qdel(src)
 	
-	//H.organs = list(/obj/item/organ/external/robotic/moebius/torso)
-	//H.rebuild_organs(FALSE)
-
 /obj/item/organ/external/robotic/moebius/head
 	default_description = /datum/organ_description/head
 
