@@ -474,6 +474,18 @@
 	if(istype(O))
 		O.make_young()
 
+/datum/reagent/other/entropic_agent
+	name = "Entropic agent"
+	id = "entropic_agent"
+	description = "A murky sludge that, when applied to an object, rapidly accelerates the passage of time"
+	taste_description = "nothing"
+	reagent_state = LIQUID
+	color = "#524b41"
+
+/datum/reagent/other/entropic_agent/touch_obj(obj/O)
+	if(istype(O))
+		O.make_old(FALSE)
+
 /datum/reagent/resuscitator
 	name = "Resuscitator"
 	id = "resuscitator"
