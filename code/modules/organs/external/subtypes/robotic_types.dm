@@ -103,7 +103,7 @@
 		EO.Destroy()
 	H.organs.Add(new /obj/item/organ/external/robotic/moebius/torso(H))
 	user.drop_from_inventory(src)
-		qdel(src)
+	qdel(src)
 	
 /obj/item/organ/external/robotic/moebius/head
 	default_description = /datum/organ_description/head
