@@ -82,3 +82,30 @@
 	eyes_icon.Blend(right_eye)
 
 	return eyes_icon
+
+/obj/item/organ/internal/eyes/eyelluminate
+    name = "\"Eyelluminate\" eyes"
+	icon_state = "eyes"
+	desc = "Eyes with an integrated flashlight."
+	organ_efficiency = list(OP_EYES = 100)
+	nature = MODIFICATION_SILICON
+	var/light_on = FALSE
+	var/radiance_power = 0.4 //weak light but you get that for being small source
+	var/light_spot_power = 1
+	var/light_spot_radius = 2
+	var/obj/effect/effect/light/light_spot
+
+/obj/item/organ/internal/eyes/proc/toggle_eye()
+    return TRUE
+
+/obj/item/organ/internal/eyes/eyelluminate/toggle_eye()
+	var/verb_name = "Toggle eye"
+	var/verb_category = "Cybernetics"
+	light_on = !light_on //Toggle on click
+	if(light_on)
+		//turn on light and handle
+	else
+		qdel(light_spot)
+	
+/obj/item/organ/internal/eyes/eyelluminate/light_on()
+	
